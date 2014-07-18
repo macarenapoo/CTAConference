@@ -436,6 +436,7 @@ function validateForm(){
 
 function loadSpeakers(){
 	$("#speakers .speakers_list").empty();
+	$("#speakers .speakers_list").html("");
 	data.on('value',function(snapshot){
 		var allSpeakers = snapshot.val().speakers;
 

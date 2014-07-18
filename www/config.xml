@@ -58,8 +58,17 @@
   <!--<preference name="splashScreenDelay"       value="5000" />-->
   <!--<preference name="keepRunning"       value="false" />-->
 
-  <icon src="icon.png" />
+  <icon src="icons/ldpi.png" gap:platform="android" gap:density="ldpi" />
+  <icon src="icons/mdpi.png" gap:platform="android" gap:density="mdpi" />
+  <icon src="icons/hdpi.png" gap:platform="android" gap:density="hdpi" />
+  <icon src="icons/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+  <icon src="icons/xxhdpi.png" gap:platform="android" gap:density="xxhdpi" />
 
+  <gap:splash src="splash/ldpi.png" gap:platform="android" gap:density="ldpi" />
+  <gap:splash src="splash/mdpi.png" gap:platform="android" gap:density="mdpi" />
+  <gap:splash src="splash/hdpi.png" gap:platform="android" gap:density="hdpi" />
+  <gap:splash src="splash/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
+  <gap:splash src="splash/xxhdpi.png" gap:platform="android" gap:density="xxhdpi" />
 
   <!-- content src="http://www.w3.org/2010/05/video/mediaevents.html" / -->
 </widget>
