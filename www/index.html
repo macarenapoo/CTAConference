@@ -1,54 +1,62 @@
 <!DOCTYPE html>
   <html>
     <head>
+      <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
       <link type="text/css" rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css">
       <link type="text/css" rel="stylesheet" href="css/style.css">
       <script src="js/jquery-1.11.1.min.js"></script>
       <script src="js/jquery.mobile-1.4.2.min.js"></script>
+       <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
+      <script src="js/info2.js"></script>
       <script src="js/script.js"></script>
-      <script src="js/info.js"></script>
+      
     </head>
     <body>
-      <div data-role="page" id="index" data-dom-cache="true" data-url="wifi" tabindex="0" class="ui-page ui-body-c ui-page-active" style="min-height: 853px;"><!-- page-->
+      <div data-role="page" id="index">
+          <div id="well">
+            <h2>
+              <strong id="slider"></strong>
+              <span>swipe to see agenda</span>
+            </h2>
+          </div>
+      </div>
+      <div data-role="page" id="agenda" class="sub-page" data-transition="slide" data-direction="reverse"> <!-- page -->
           <header>
-            <div id="header-date">Friday, September 12th</div>
-            <div id="header-location">Vancouver, Canada</div>
+            <h1>Friday, September 12<sup>th</sup></h1>
           </header>
-          <img id="logo" src="css/images/call-to-action.png">
-          <section>
-            <a href="#agenda" data-transition="slide"><img src="css/images/agenda.png">Agenda</a>
-            <a href="reviews.html" data-transition="slide"><img src="css/images/reviews.png">Reviews</a>
-            <a href="#network" data-transition="slide"><img src="css/images/wifi.png">WIFI</a>
-          </section>
-        <footer>Powered by <span>Unbounce</span></footer>
-      </div>
-     <!-- <div data-role="page" id="agenda" data-dom-cache="true" data-url="wifi" tabindex="0" class="ui-page ui-body-c ui-page-active" style="min-height: 853px;"> -->
-      <div data-role="page" id="agenda" class="sub-page"> <!-- page -->
-        <img class="sub-icon" src="css/images/agenda_white.png">
-        <nav>
-          <a href="agenda.html" data-rel="back"><img src="css/images/home.png">HOME</a>
-          <a href="https://twitter.com/intent/tweet?text=Looking+to+sharpen+your+marketing+skills%3F+Register+today+for+%23CTAConf+presented+by+%40unbounce+http%3A%2F%2Fctt.ec%2F0kagj%2B+&source=clicktotweet"><img src="css/images/tweet.png">#ctaconf</a>
-
-        </nav>
-        <label>
-          Friday, September 12<sup>th</sup>
-        </label>
-        <div class="sub-page-content">
-          <ul class="agenda">
-            
-          </ul>
+          <div data-role="footer" data-id="nav" data-position="fixed" id="nav">
+            <div data-role="navbar" class="agenda_active">
+              <ul>
+                <li><a href="#agenda" data-transition="slide" id="agenda_nav" class="ui-btn-active ui-state-persist">Agenda</a></li>
+                <li><a href="#speakers" data-transition="slide" id="speakers_nav">Speakers</a></li>
+                <li><a href="#review" data-transition="slide" id="reviews_nav">Reviews</a></li>
+                <li><a href="#info" data-transition="slide" id="info_nav">Info</a></li>
+              </ul>
+            </div><!-- /navbar -->
+          </div><!-- /footer -->
+          <div class="sub-page-content">
+            <ul class="agenda"></ul>
+          </div>
         </div>
-        <footer>Powered by <span>Unbounce</span></footer>
-      </div>
-      <div data-role="page" id="speaker" class="sub-page"> <!-- page -->
-        <header>
-          <img class="sub-icon" src="css/images/agenda_white.png">
-          <nav>
-            <a href="#" data-rel="back" data-transition="slide" data-direction="reverse"><img src="css/images/back.png">Back</a>
-            <a href="https://twitter.com/intent/tweet?text=Looking+to+sharpen+your+marketing+skills%3F+Register+today+for+%23CTAConf+presented+by+%40unbounce+http%3A%2F%2Fctt.ec%2F0kagj%2B+&source=clicktotweet"><img src="css/images/tweet.png">#ctaconf</a>
-          </nav>
-        </header>
-        <div class="sub-page-content">
+        <div data-role="page" id="speaker" class="sub-page"> <!-- page -->
+          <header>
+            <nav>
+              <a href="#agenda" data-rel="back" data-transition="slide" data-direction="reverse"><img src="css/images/back.png">BACK</a>
+            </nav>
+            <h1>Agenda</h1>
+          </header>
+          <div data-role="footer" data-id="nav" data-position="fixed" id="nav">
+            <div data-role="navbar" class="agenda_active">
+              <ul>
+                <li><a href="#agenda" data-transition="slide" id="agenda_nav" class="ui-btn-active ui-state-persist">Agenda</a></li>
+                <li><a href="#speakers" data-transition="slide" id="speakers_nav">Speakers</a></li>
+                <li><a href="#review" data-transition="slide" id="reviews_nav">Reviews</a></li>
+                <li><a href="#info" data-transition="slide" id="info_nav">Info</a></li>
+              </ul>
+            </div><!-- /navbar -->
+          </div><!-- /footer -->
+          <div class="sub-page-content">
             <div class="speaker_images">
               <div class="mask m1">
                 <img src="css/images/speakers/rick_perreault.png"/>
@@ -59,35 +67,234 @@
               <div class="mask m3">
                 <img src="css/images/speakers/rick_perreault.png"/>
               </div>
+            </div>
+            <span class="by">by</span>
+            <ul class="speakers">
+              <li>Joanna Lord, CMO BigDoor</li>
+              <li>Braden Hopenner, CMO Coastal Contacts</li>
+              <li>Tiffany Da Silva, Head of CRO at Shopify</li>
+            </ul>
+            <div class="description">
+              <p>Joanna, Braden & Tiffany share their biggest digital marketing wins and fails - rapid fire. This panel will cover everything from PPC to Email to Retargeting to Social Amplification, all through conversion lens. </p>
+            </div>
+            <a href="#" id="submit_btn" class="button">Submit Review</a>
+            <!--<footer>Powered by <span>Unbounce</span></footer>-->
           </div>
-          <div class="title">Full Stack Panel: Digital Marketing Through A Conversion Lense</div>
-          <span class="by">by</span>
-          <ul class="speakers">
-            <li>Joanna Lord, CMO BigDoor</li>
-            <li>Braden Hopenner, CMO Coastal Contacts</li>
-            <li>Tiffany Da Silva, Head of CRO at Shopify</li>
-          </ul>
-          <div class="description">
-            <p>Joanna, Braden & Tiffany share their biggest digital marketing wins and fails - rapid fire. This panel will cover everything from PPC to Email to Retargeting to Social Amplification, all through conversion lens. </p>
+        </div>
+        <div data-role="page" id="afterparty" class="sub-page"> <!-- page -->
+          <header>
+            <nav>
+              <a href="#agenda" data-rel="back" data-transition="slide" data-direction="reverse"><img src="css/images/back.png">BACK</a>
+            </nav>
+            <h1>Agenda</h1>
+          </header>
+          <div data-role="footer" data-id="nav" data-position="fixed" id="nav">
+            <div data-role="navbar" class="agenda_active">
+              <ul>
+                <li><a href="#agenda" data-transition="slide" id="agenda_nav" class="ui-btn-active ui-state-persist">Agenda</a></li>
+                <li><a href="#speakers" data-transition="slide" id="speakers_nav">Speakers</a></li>
+                <li><a href="#review" data-transition="slide" id="reviews_nav">Reviews</a></li>
+                <li><a href="#info" data-transition="slide" id="info_nav">Info</a></li>
+              </ul>
+            </div><!-- /navbar -->
+          </div><!-- /footer -->
+          <div class="sub-page-content">
+              <img src="css/images/afterparty.png"/>
+              <div class="title">After Party <br/>7pm @ Brooklyn Lounge</div>
+              <div class="address">560 Seymour St, Vancouver, BC</div>
+              <a href="#mapPopup" data-rel="popup" class="button">View Map</a>
           </div>
-          <a href="#" class="button">Submit Review</a>
-          <footer>Powered by <span>Unbounce</span></footer>
+          <div data-role="popup" id="mapPopup" data-transition="pop" data-overlay-theme="b" data-corners="false" data-tolerance="15,15">
+            <a href="#" data-rel="back" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+          </div>
+        </div> 
+        <div data-role="page" id="review" class="sub-page"> <!-- page -->
+          <header>
+            <h1>Reviews</h1>
+          </header>
+          <div data-role="footer" data-id="nav" data-position="fixed" id="nav">
+            <div data-role="navbar" class="reviews_active">
+              <ul>
+                <li><a href="#agenda" data-transition="slide" data-direction="reverse" id="agenda_nav">Agenda</a></li>
+                <li><a href="#speakers" data-direction="reverse" data-transition="slide" id="speakers_nav">Speakers</a></li>
+                <li><a href="#review" data-transition="slide" id="reviews_nav" class="ui-btn-active ui-state-persist">Reviews</a></li>
+                <li><a href="#info" data-transition="slide" id="info_nav">Info</a></li>
+              </ul>
+            </div><!-- /navbar -->
+          </div><!-- /footer -->
+          <div class="sub-page-content">
+            <h1>Get a change to win a ton of prizes</h1>
+            <p>By submitting a review</p>
+            <form action="javascript:submitReview()">
+              <input type="text" name="name" data-role="none" placeholder="FULL NAME">
+              <select name="speaker" data-role="none">
+              </select>
+              <label id="speaker_label"><sub>*</sub></label>
+              <label data-role="none" id="performance_label">Speaker performance<sub>*</sub><span></span></label>
+              <span class="rating">
+                <input type="radio" name="performance" value="1" data-role="none"><i></i>
+                <input type="radio" name="performance" value="2" data-role="none"><i></i>
+                <input type="radio" name="performance" value="3" data-role="none"><i></i>
+                <input type="radio" name="performance" value="4" data-role="none"><i></i>
+                <input type="radio" name="performance" value="5" data-role="none"><i></i>
+              </span>
+              <label data-role="none" id="content_label">Quality of Content<sub>*</sub><span></span></label>
+              <span class="rating">
+                <input type="radio" name="quality" value="1" data-role="none"><i></i>
+                <input type="radio" name="quality" value="2" data-role="none"><i></i>
+                <input type="radio" name="quality" value="3" data-role="none"><i></i>
+                <input type="radio" name="quality" value="4" data-role="none"><i></i>
+                <input type="radio" name="quality" value="5" data-role="none"><i></i>
+              </span>
+              <label data-role="none" id="entertaining_label">Entertaining<sub>*</sub><span></span></label>
+              <span class="rating">
+                <input type="radio" name="entertaining" value="1" data-role="none"><i></i>
+                <input type="radio" name="entertaining" value="2" data-role="none"><i></i>
+                <input type="radio" name="entertaining" value="3" data-role="none"><i></i>
+                <input type="radio" name="entertaining" value="4" data-role="none"><i></i>
+                <input type="radio" name="entertaining" value="5" data-role="none"><i></i>
+              </span>
+              <label data-role="none" id="actionable_label">Actionable Content<sub>*</sub><span></span></label>
+              <span class="rating">
+                <input type="radio" name="actionable" value="1" data-role="none"><i></i>
+                <input type="radio" name="actionable" value="2" data-role="none"><i></i>
+                <input type="radio" name="actionable" value="3" data-role="none"><i></i>
+                <input type="radio" name="actionable" value="4" data-role="none"><i></i>
+                <input type="radio" name="actionable" value="5" data-role="none"><i></i>
+              </span>
+              <textarea name="comments" placeholder="COMMENTS (optional)" data-role="none"></textarea>
+            </form>
+            <div id="alert">Please make sure all the fields are completed before submitting this review!</div>
+            <a href="javascript:submitReview();" class="button">Submit Review</a>
+            <!--<footer>Powered by <span>Unbounce</span></footer>-->
+          </div>
         </div>
-      </div>
-      <div data-role="page" id="network" class="sub-page"> <!-- page -->
-        <header>
-          <img class="sub-icon" src="css/images/wifi_white.png">
-          <nav>
-            <a href="#" data-rel="back" data-transition="slide" data-direction="reverse"><img src="css/images/home.png">Home</a>
-            <a href="https://twitter.com/intent/tweet?text=Looking+to+sharpen+your+marketing+skills%3F+Register+today+for+%23CTAConf+presented+by+%40unbounce+http%3A%2F%2Fctt.ec%2F0kagj%2B+&source=clicktotweet"><img src="css/images/tweet.png">#ctaconf</a>
-          </nav>
-        </header>
-        <div class="sub-page-content">
-          <div class="sub-page-header-style">WIFI INFORMATION</div>
-          <div class="sub-page-subheader-style"><span>Network:</span>SFU Woodwards</div>
-          <div class="sub-page-subheader-style"><span>Password:</span>Unbounce</div>
+        <div data-role="page" id="speakers" class="sub-page"> <!-- page -->
+          <header>
+            <h1>Speakers</h1>
+          </header>
+          <div data-role="footer" data-id="nav" data-position="fixed" id="nav">
+            <div data-role="navbar" class="speakers_active">
+              <ul>
+                <li><a href="#agenda" data-transition="slide" data-direction="reverse" id="agenda_nav">Agenda</a></li>
+                <li><a href="#speakers" data-transition="slide" id="speakers_nav" class="ui-btn-active ui-state-persist">Speakers</a></li>
+                <li><a href="#review" data-transition="slide" id="reviews_nav">Reviews</a></li>
+                <li><a href="#info" data-transition="slide" id="info_nav">Info</a></li>
+              </ul>
+            </div><!-- /navbar -->
+          </div><!-- /footer -->
+          <div class="sub-page-content">
+            <ul class="speakers_list">
+                
+            </ul>
+          </div>
+          <!--<footer>Powered by <span>Unbounce</span></footer>-->
         </div>
-        <footer>Powered by <span>Unbounce</span></footer>
-      </div>
+        <div data-role="page" id="speaker_bio" class="sub-page"> <!-- page -->
+          <header>
+            <nav>
+              <a href="#" data-rel="back" data-transition="slide" data-direction="reverse"><img src="css/images/back.png">BACK</a>
+            </nav>
+            <h1>Speakers</h1>
+          </header>
+          <div data-role="footer" data-id="nav" data-position="fixed" id="nav">
+            <div data-role="navbar" class="speakers_active">
+              <ul>
+                <li><a href="#agenda" data-transition="slide" data-direction="reverse" id="agenda_nav">Agenda</a></li>
+                <li><a href="#speakers" data-transition="slide" id="speakers_nav" class="ui-btn-active ui-state-persist">Speakers</a></li>
+                <li><a href="#review" data-transition="slide" id="reviews_nav">Reviews</a></li>
+                <li><a href="#info" data-transition="slide" id="info_nav">Info</a></li>
+              </ul>
+            </div><!-- /navbar -->
+          </div><!-- /header -->
+          <div class="sub-page-content">
+            <div class="speaker_images">
+                <div class="mask m1">
+                  <img src="css/images/speakers/joanna_lord.jpg"/>
+                </div>
+                <div class="title">Joanna Lord</div>
+                <div class="twitter">@joannalord</div>
+            </div>
+            <div class="description">
+            </div>
+            <ul class="agenda">
+              <a>
+                <li>
+                  <div class="time">9:00 AM</div>
+                  <div class="title">Full Stack Panel: Digital Marketing Through a Conversion Lense</div>
+                </li>
+              </a>
+            </ul>
+          </div>
+        </div>
+        <div data-role="page" id="info" class="sub-page"> <!-- page -->
+          <header>
+            <h1>Info</h1>
+          </header>
+          <div data-role="footer" data-id="nav" data-position="fixed" id="nav">
+            <div data-role="navbar" class="info_active">
+              <ul>
+                <li><a href="#agenda" data-transition="slide" data-direction="reverse" id="agenda_nav">Agenda</a></li>
+                <li><a href="#speakers" data-transition="slide" data-direction="reverse" id="speakers_nav">Speakers</a></li>
+                <li><a href="#review" data-transition="slide" data-direction="reverse" id="reviews_nav">Reviews</a></li>
+                <li><a href="#info" data-transition="slide" data-direction="reverse" id="info_nav" class="ui-btn-active ui-state-persist">Info</a></li>
+              </ul>
+            </div><!-- /navbar -->
+          </div><!-- /footer -->
+          <div class="sub-page-content">
+            <section>
+              <img src="css/images/talks.png"/>
+              <h1>Talks, Panels & Discussion</h1>
+              <p>8 am at SFU Goldcorp Center for the Arts</p>
+              <p>149 W Hastings St, Vancouver, BC</p>
+              <a href="#mapPopup2" data-rel="popup" class="button">View Map</a>
+            </section>
+            <section>
+              <img src="css/images/wifi_info.png"/>
+              <h1>WIFI Information</h1>
+              <p><span>Network:</span> SFU Woodwards</p>
+              <p><span>Password:</span> Unbounce</p>
+            </section>
+            <section>
+              <img src="css/images/twitter_info.png"/>
+              <h1>Tweet us!</hi>
+              <p>#ctaconf</p>
+            </section>
+            <section>
+              <p>Thanks to:</p>
+              <p>The Noun Project collection:</p>
+              <p>"Microphone" symbol by Shane Miller</p>
+              <p>"Rating" symbol by Evgeniy Kozachenko</p>
+              <p>"Airport" symbol by Venkatesh Aiyulu</p>
+            </section>
+            <!--<footer>Powered by <span>Unbounce</span></footer>-->
+          </div>
+          <div data-role="popup" id="mapPopup2" data-transition="pop" data-overlay-theme="b" data-corners="false" data-tolerance="15,15">
+            <a href="#" data-rel="back" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+          </div>
+        </div>
+        <div data-role="page" id="thankyou" class="sub-page"> <!-- page -->
+          <header>
+            <h1>Reviews</h1>
+          </header>
+          <div data-role="footer" data-id="nav" data-position="fixed" id="nav">
+            <div data-role="navbar" class="reviews_active">
+              <ul>
+                <li><a href="#agenda" data-transition="slide" data-direction="reverse" id="agenda_nav">Agenda</a></li>
+                <li><a href="#speakers" data-direction="reverse" data-transition="slide" id="speakers_nav">Speakers</a></li>
+                <li><a href="#review" data-transition="slide" id="reviews_nav" class="ui-btn-active ui-state-persist">Reviews</a></li>
+                <li><a href="#info" data-transition="slide" id="info_nav">Info</a></li>
+              </ul>
+            </div><!-- /navbar -->
+          </div><!-- /header -->
+          <div class="sub-page-content">
+            <h1>Thank you!</h1>
+            <p>Submit more reviews to increase the chance of winning a ton of prizes at the end of the event!</p>
+            <a href="#review" class="button">Review Other Speakers</a>
+          </div>
+          <!--<footer>Powered by <span>Unbounce</span></footer>-->
+
+        </div>
+
     </body>
   </html>

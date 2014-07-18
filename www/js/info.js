@@ -1,5 +1,12 @@
 var agenda = [
 	{
+		"type": "event",
+		"time": "8:00 am",
+		"title": "Breakfast & Registration",
+		"image": "breakfast.png"
+	},
+	{
+		"type": "conference",
 		"id": 0,
 		"time": "9:00 am",
 		"title": "Welcome & Opening Remarks",
@@ -13,6 +20,7 @@ var agenda = [
 		"description": " "
 	},
 	{
+		"type": "conference",
 		"id": 1,
 		"time": "9:20 am",
 		"title": "The No-Bullshit Approach to Context-Driven Conversion Rate Optimization",
@@ -26,6 +34,7 @@ var agenda = [
 		"description": "<p>Your future customers can't see the other side of their next click, but they can see right through your marketing. The problem is a confusing disconnect between pre and post-click experiences. Oli will show you how to use contextual design and psychology to build optimized experiences that convert and delight your visitors.</p>"
 	},
 	{
+		"type": "conference",
 		"id": 2,
 		"time": "10:00 am",
 		"title": "Mobile, Zen Marketing and the Future of Conversion",
@@ -39,6 +48,13 @@ var agenda = [
 		"description": "<p>Conversion marketing is fast-paced and ever changing. Chris will teach you how to get ahead of the curve by looking at recent changes and where he sees the future of conversion rate optimization going - including the oh-so-hot topic of mobile optimization.</p>"
 	},
 	{
+		"type": "event",
+		"time": "10:35 am",
+		"title": "Break",
+		"image": "break.png"
+	},
+	{
+		"type": "conference",
 		"id": 3,
 		"time": "10:55 am",
 		"title": "How to Optimize the Crap Out Of Your Lead Gen Landing Pages",
@@ -52,6 +68,7 @@ var agenda = [
 		"description": "<p>There is no such thing as a 'lead'. For every business it is different. For some a name and email adress is gold. For others a pone call puts money in the bank. Still others need the visitor to complete an application before they are considered a 'lead'.</p><p>Brian will show you how to optimize your lead recipe. He will present winning formulas for landing pages, techniques for valuing your leads, and some unexpected ways to increase lead quality.</p>"
 	},
 	{
+		"type": "conference",
 		"id": 4,
 		"time": "11:35 am",
 		"title": "15 A/B Test Mistakes I See Business Do All the Time (and What to Do About It)",
@@ -65,6 +82,13 @@ var agenda = [
 		"description": "<p>Peep deep-dives presenting the lesser known A/B testing mistakes you're probably making (and not aware of), and more importantly what you can do to fix them.</p>"
 	},
 	{
+		"type": "event",
+		"time": "12:05 pm",
+		"title": "Lunch",
+		"image": "lunch.png"
+	},
+	{
+		"type": "conference",
 		"id": 5,
 		"time": "1:30 pm",
 		"title": "How to Convert Like a Boss Using Old School Copywriting and New School Smarts",
@@ -78,6 +102,7 @@ var agenda = [
 		"description": "<p>Copy is your online salesperson - it compels people to act. From email to headlines to CTAs, Joanna will teach you how to write compelling copy that will make your visitors take action and convert.</p>"
 	},
 	{
+		"type": "conference",
 		"id": 6,
 		"time": "2:10 pm",
 		"title": "Unlock Your Company's Growth Engine with Conversion Optimization",
@@ -91,6 +116,7 @@ var agenda = [
 		"description": "<p>Marketers can get too caught up with chasing after tactical gains that they lose sight of the bigger picture. Sean will teach you what unlocking growth truly means, how optimization fits into your overall strategy and how your efforts turn into a sustainable competitive advantage for your business.</p>"
 	},
 	{
+		"type": "conference",
 		"id": 7,
 		"time": "2:45 pm",
 		"title": "Full Stack Panel: Digital Marketing Through a Conversion Lense",
@@ -114,6 +140,13 @@ var agenda = [
 		"description": "<p>Joanna, Braden & Tiffany share their biggest digital marketing wins and fails - rapid fire. This panel will cover everything from PPC to Email Retargeting to Social Amplification, all through a conversion lense.</p>"
 	},
 	{
+		"type": "event",
+		"time": "03:45 pm",
+		"title": "Break",
+		"image": "break.png"
+	},
+	{
+		"type": "conference",
 		"id": 8,
 		"time": "4:05 pm",
 		"title": "Persona-lization: How to Persuade Using Buying Modalities",
@@ -127,6 +160,7 @@ var agenda = [
 		"description": "<p>Learn how to use the persuasion psychology of the four buying modalities: Competitive, Spontaneous, Methodical and Humanistic, to boost conversions. <br/>You'll see how you can translate test insights, influences & behaviors for each modality along with tricks to audit your content, layout and strategy to adequately persuade all four.</p>"
 	},
 	{
+		"type": "conference",
 		"id": 9,
 		"time": "4:40 pm",
 		"title": "Live Landing Page Smack Down: The Game Show Edition",
@@ -143,5 +177,13 @@ var agenda = [
 			}
 		],
 		"description": "<p>You've never seen landing pages critiqued like this. There will be podiums, prizes, buzzers, brutal honesty, foul language, and gallons of blood spilled. The best part? We're talking about your landing pages! Be there, be scared, and be prepared to end the day with sore vocal chords.</p>"
-	}
+	},
+	{
+		"type": "party",
+		"id": 10,
+		"time": "7:00 pm",
+		"title": "After Party @ Brooklyn Lounge",
+		"description": "After Party <br/>7pm @ Brooklyn Lounge",
+		"address": "560 Seymour St, Vancouver, BC"
+	},
 ]
