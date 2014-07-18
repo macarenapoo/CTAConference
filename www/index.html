@@ -1,42 +1,93 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
+  <html>
     <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+      <link type="text/css" rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css">
+      <link type="text/css" rel="stylesheet" href="css/style.css">
+      <script src="js/jquery-1.11.1.min.js"></script>
+      <script src="js/jquery.mobile-1.4.2.min.js"></script>
+      <script src="js/script.js"></script>
+      <script src="js/info.js"></script>
     </head>
     <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+      <div data-role="page" id="index" data-dom-cache="true" data-url="wifi" tabindex="0" class="ui-page ui-body-c ui-page-active" style="min-height: 853px;"><!-- page-->
+          <header>
+            <div id="header-date">Friday, September 12th</div>
+            <div id="header-location">Vancouver, Canada</div>
+          </header>
+          <img id="logo" src="css/images/call-to-action.png">
+          <section>
+            <a href="#agenda" data-transition="slide"><img src="css/images/agenda.png">Agenda</a>
+            <a href="reviews.html" data-transition="slide"><img src="css/images/reviews.png">Reviews</a>
+            <a href="#network" data-transition="slide"><img src="css/images/wifi.png">WIFI</a>
+          </section>
+        <footer>Powered by <span>Unbounce</span></footer>
+      </div>
+     <!-- <div data-role="page" id="agenda" data-dom-cache="true" data-url="wifi" tabindex="0" class="ui-page ui-body-c ui-page-active" style="min-height: 853px;"> -->
+      <div data-role="page" id="agenda" class="sub-page"> <!-- page -->
+        <img class="sub-icon" src="css/images/agenda_white.png">
+        <nav>
+          <a href="agenda.html" data-rel="back"><img src="css/images/home.png">HOME</a>
+          <a href="https://twitter.com/intent/tweet?text=Looking+to+sharpen+your+marketing+skills%3F+Register+today+for+%23CTAConf+presented+by+%40unbounce+http%3A%2F%2Fctt.ec%2F0kagj%2B+&source=clicktotweet"><img src="css/images/tweet.png">#ctaconf</a>
+
+        </nav>
+        <label>
+          Friday, September 12<sup>th</sup>
+        </label>
+        <div class="sub-page-content">
+          <ul class="agenda">
+            
+          </ul>
         </div>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+        <footer>Powered by <span>Unbounce</span></footer>
+      </div>
+      <div data-role="page" id="speaker" class="sub-page"> <!-- page -->
+        <header>
+          <img class="sub-icon" src="css/images/agenda_white.png">
+          <nav>
+            <a href="#" data-rel="back" data-transition="slide" data-direction="reverse"><img src="css/images/back.png">Back</a>
+            <a href="https://twitter.com/intent/tweet?text=Looking+to+sharpen+your+marketing+skills%3F+Register+today+for+%23CTAConf+presented+by+%40unbounce+http%3A%2F%2Fctt.ec%2F0kagj%2B+&source=clicktotweet"><img src="css/images/tweet.png">#ctaconf</a>
+          </nav>
+        </header>
+        <div class="sub-page-content">
+            <div class="speaker_images">
+              <div class="mask m1">
+                <img src="css/images/speakers/rick_perreault.png"/>
+              </div>
+              <div class="mask m2">
+                <img src="css/images/speakers/rick_perreault.png"/>
+              </div>
+              <div class="mask m3">
+                <img src="css/images/speakers/rick_perreault.png"/>
+              </div>
+          </div>
+          <div class="title">Full Stack Panel: Digital Marketing Through A Conversion Lense</div>
+          <span class="by">by</span>
+          <ul class="speakers">
+            <li>Joanna Lord, CMO BigDoor</li>
+            <li>Braden Hopenner, CMO Coastal Contacts</li>
+            <li>Tiffany Da Silva, Head of CRO at Shopify</li>
+          </ul>
+          <div class="description">
+            <p>Joanna, Braden & Tiffany share their biggest digital marketing wins and fails - rapid fire. This panel will cover everything from PPC to Email to Retargeting to Social Amplification, all through conversion lens. </p>
+          </div>
+          <a href="#" class="button">Submit Review</a>
+          <footer>Powered by <span>Unbounce</span></footer>
+        </div>
+      </div>
+      <div data-role="page" id="network" class="sub-page"> <!-- page -->
+        <header>
+          <img class="sub-icon" src="css/images/wifi_white.png">
+          <nav>
+            <a href="#" data-rel="back" data-transition="slide" data-direction="reverse"><img src="css/images/home.png">Home</a>
+            <a href="https://twitter.com/intent/tweet?text=Looking+to+sharpen+your+marketing+skills%3F+Register+today+for+%23CTAConf+presented+by+%40unbounce+http%3A%2F%2Fctt.ec%2F0kagj%2B+&source=clicktotweet"><img src="css/images/tweet.png">#ctaconf</a>
+          </nav>
+        </header>
+        <div class="sub-page-content">
+          <div class="sub-page-header-style">WIFI INFORMATION</div>
+          <div class="sub-page-subheader-style"><span>Network:</span>SFU Woodwards</div>
+          <div class="sub-page-subheader-style"><span>Password:</span>Unbounce</div>
+        </div>
+        <footer>Powered by <span>Unbounce</span></footer>
+      </div>
     </body>
-</html>
+  </html>
