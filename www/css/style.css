@@ -92,13 +92,13 @@
 }
 
 #well h2{
-  background: -moz-linear-gradient(left, #737e86, 0.3, #92a0a9, 0.5, white, 0.7, #92a0a9, #737e86);
+  /*background: -moz-linear-gradient(left, #737e86, 0.3, #92a0a9, 0.5, white, 0.7, #92a0a9, #737e86);
   background: -webkit-gradient(linear,left top,right top,color-stop(0, #737e86),color-stop(0.3, #92a0a9),color-stop(0.5, white),color-stop(0.7, #92a0a9),color-stop(1, #737e86));
   -moz-background-clip: text;
   -webkit-background-clip: text;
   -moz-text-fill-color: transparent;
   -webkit-text-fill-color: transparent;
-  -webkit-animation: slidetounlock 5s infinite;
+  -webkit-animation: slidetounlock 5s infinite;*/
   font-family: 'open_sansregular';
   font-weight: 300;
   font-size: 16px;
@@ -106,8 +106,9 @@
   text-indent: 25px;
   padding: 0;
   width: 200%;
-  -webkit-text-size-adjust: none;
-  -webkit-animation: slidetounlock 5s infinite;
+  color: #92a0a9;
+  /*-webkit-text-size-adjust: none;
+  -webkit-animation: slidetounlock 5s infinite;*/
   text-align: left;
 }
 

@@ -305,7 +305,7 @@ function loadConference(id){
 			$(mask).addClass("mask m"+(i+1));
 
 			var image = document.createElement("img");
-			$(image).attr("src","css/images/speakers/"+allSpeakers[agenda[id].speakers[i]].image);
+			$(image).attr("src","css/images/speakers/diamond/"+allSpeakers[agenda[id].speakers[i]].image);
 			$(a).appendTo(mask);
 			$(image).appendTo(a);
 			$(mask).appendTo(images);
