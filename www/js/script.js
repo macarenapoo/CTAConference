@@ -486,7 +486,7 @@ function loadBio(id){
 		agenda = snapshot.val().agenda;
 		var allSpeakers = snapshot.val().speakers;
 
-		$("#speaker_bio .m1 img").attr("src","css/images/speakers/"+allSpeakers[id].image);
+		$("#speaker_bio .m1 img").attr("src","css/images/speakers/diamond/"+allSpeakers[id].image);
 		$("#speaker_bio .speaker_images .title").html(allSpeakers[id].name);
 		$("#speaker_bio .twitter").html(allSpeakers[id].twitter);
 
