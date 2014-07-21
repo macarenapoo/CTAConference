@@ -17,6 +17,7 @@ $(document).on("mobileinit",function(){
 
 	infoHeight = height - 160;
 	$("#info .sub-page-content").css("max-height",infoHeight + "px");
+
 });
 
 $(document).on("pageinit","#index", function(){

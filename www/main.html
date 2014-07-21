@@ -7,30 +7,20 @@
       <link type="text/css" rel="stylesheet" href="css/style.css">
       <script src="js/jquery-1.11.1.min.js"></script>
       <script src="js/jquery.mobile-1.4.2.min.js"></script>
-      <!--<script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>-->
+      <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
       <script src="js/info2.js"></script>
       <script src="js/script.js"></script>
-      <script>
-          document.addEventListener("deviceready", onDeviceReady, false);
-
-          function onDeviceReady() {
-              // Ahora es seguro utilizar la API PhoneGap
-              alert("ya"); 
-              $.getScript('https://cdn.firebase.com/js/client/1.0.17/firebase.js');
-
-         }
-      </script>
       
     </head>
     <body>
-      <div data-role="page" id="index">
+      <!--<div data-role="page" id="index">
           <div id="well">
             <h2>
               <strong id="slider"></strong>
               <span>swipe to see agenda</span>
             </h2>
           </div>
-      </div>
+      </div>-->
       <div data-role="page" id="agenda" class="sub-page" data-transition="slide" data-direction="reverse"> <!-- page -->
           <header>
             <h1>Friday, September 12<sup>th</sup></h1>
