@@ -27,6 +27,9 @@ $(document).on("pageinit","#index", function(){
 	$("#index").on("swipeleft",function(event){
 		$.mobile.changePage($('#agenda'),{transition:"slide"});
 	});
+	$("#index").on("tap",function(event){
+		$.mobile.changePage($('#agenda'),{transition:"slide"});
+	});
 });
 
 $(document).on("pagecreate","#review", function(){
