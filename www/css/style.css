@@ -700,6 +700,7 @@ label{
   margin: 10px auto;
   transition: all .5s ease-in-out;
   -webkit-transition: all .5s ease-in-out;
+  -webkit-appearance: none;
 }
 
 #review select.invalid{
