@@ -1,10 +1,13 @@
 var data = new Firebase("https://cta-conference.firebaseio.com/");
 var agenda = localData.agenda;
+var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+var pageHeight = Math.ceil(((height - 115)*100)/height);
 
-$(document).on("mobileinit",function(){
+/*$(document).on("mobileinit",function(){
 	var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
 	var agendaHeight = height - 165;
 	$("#agenda .sub-page-content").css("max-height", agendaHeight + "px");
+	alert(agendaHeight);
 	$("#speakers .sub-page-content").css("max-height", agendaHeight + "px");
 
 	var offset = $("#speaker .sub-page-content").offset();
@@ -18,6 +21,28 @@ $(document).on("mobileinit",function(){
 	infoHeight = height - 160;
 	$("#info .sub-page-content").css("max-height",infoHeight + "px");
 
+});*/
+
+$(document).on("pageinit","#agenda",function(){
+	$("#agenda .sub-page-content").css("max-height", pageHeight + "%");
+});
+$(document).on("pageinit","#speaker",function(){
+	$("#speaker .sub-page-content").css("max-height", pageHeight + "%");
+});
+$(document).on("pageinit","#afterparty",function(){
+	$("#afterparty .sub-page-content").css("max-height", pageHeight + "%");
+});
+$(document).on("pageinit","#review",function(){
+	$("#review .sub-page-content").css("max-height", pageHeight + "%");
+});
+$(document).on("pageinit","#speakers",function(){
+	$("#speakers .sub-page-content").css("max-height", pageHeight + "%");
+});
+$(document).on("pageinit","#speaker_bio",function(){
+	$("#speaker_bio .sub-page-content").css("max-height", pageHeight + "%");
+});
+$(document).on("pageinit","#info",function(){
+	$("#info .sub-page-content").css("max-height", pageHeight + "%");
 });
 
 $(document).on("pageinit","#index", function(){

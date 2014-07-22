@@ -316,7 +316,7 @@ h2{
   text-transform: uppercase;
 }*/
 
-header{
+#header_main{
   position: fixed;
   box-shadow: 0 1px 5px 0px rgba(2,2,2,.2);
   background: #eee;
@@ -326,16 +326,17 @@ header{
   z-index: 5;
 }
 
-header h1{
+#header_main h1{
   font-family: 'Klavika';
   color: #7a7a7a;
   font-size: 16px;
   font-weight: normal;
   text-transform: uppercase;
   margin: 0;
+  padding: 0;
 }
 
-header sup{
+#header_main sup{
   font-size: 7px;
 }
 
@@ -505,7 +506,7 @@ label{
    height: 60px;
    transform: rotate(45deg);
    -webkit-transform: rotate(45deg);
-   overflow-x: hidden;
+   overflow: hidden;
    position: absolute;
    margin-top: 0px;
    left: 50%;
