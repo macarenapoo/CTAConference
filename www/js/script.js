@@ -24,27 +24,32 @@ var pageHeight = Math.ceil(((height - 115)*100)/height);
 });*/
 
 $(document).on("pageinit","#agenda",function(){
-	$("#agenda .sub-page-content").css("max-height", pageHeight + "%");
+	$(".sub-page-content").css("max-height", pageHeight + "%");
 });
-$(document).on("pageinit","#speaker",function(){
-	$("#speaker .sub-page-content").css("max-height", pageHeight + "%");
+/*$(document).on("pageinit","#speaker",function(){
+	$(".sub-page-content").css("max-height", pageHeight + "%");
 });
 $(document).on("pageinit","#afterparty",function(){
-	$("#afterparty .sub-page-content").css("max-height", pageHeight + "%");
+	$(".sub-page-content").css("max-height", pageHeight + "%");
 });
 $(document).on("pageinit","#review",function(){
-	$("#review .sub-page-content").css("max-height", pageHeight + "%");
+	$(".sub-page-content").css("max-height", pageHeight + "%");
 });
 $(document).on("pageinit","#speakers",function(){
-	$("#speakers .sub-page-content").css("max-height", pageHeight + "%");
+	$(".sub-page-content").css("max-height", pageHeight + "%");
 });
 $(document).on("pageinit","#speaker_bio",function(){
-	$("#speaker_bio .sub-page-content").css("max-height", pageHeight + "%");
+	$(".sub-page-content").css("max-height", pageHeight + "%");
 });
 $(document).on("pageinit","#info",function(){
-	$("#info .sub-page-content").css("max-height", pageHeight + "%");
-});
+	$(".sub-page-content").css("max-height", pageHeight + "%");
+});*/
 
+$(window).on("orientationchange",function(){
+	var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+	var pageHeight = Math.ceil(((height - 115)*100)/height);
+	$(".sub-page-content").css("max-height", pageHeight + "%");
+});
 $(document).on("pageinit","#index", function(){
 	$("#index").on("swiperight",function(event){
 		$.mobile.changePage($('#agenda'),{transition:"slide", reverse: true});

@@ -324,6 +324,7 @@ h2{
   margin: 0;
   width: 100%;
   z-index: 5;
+  border: none;
 }
 
 #header_main h1{
