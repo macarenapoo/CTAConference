@@ -83,11 +83,10 @@
 
 #well{
   position: absolute;
-  width: 182px;
+  width: 214px;
   bottom: 60px;
   left: 50%;
-  margin-left: -91px;
-  /*color: #a7b5be;*/
+  margin-left: -107px;
   overflow: hidden;
 }
 
@@ -101,7 +100,7 @@
   -webkit-animation: slidetounlock 5s infinite;*/
   font-family: 'open_sansregular';
   font-weight: 300;
-  font-size: 16px;
+  font-size: 20px;
   text-shadow: none;
   text-indent: 25px;
   padding: 0;
@@ -252,7 +251,7 @@ nav a{
   letter-spacing: -0.5px;
 }
 
-nav a:last-child{
+nav a:first-child{
   left: 0;
   position: absolute;
   top: 0;
@@ -642,8 +641,8 @@ label{
   color: #7a7a7a;
   text-align: center;
   font-weight: normal;
-  width: 60%;
-  margin: 20px auto;
+  width: 80%;
+  margin: 30px auto 10px;
   text-shadow: none;
 }
 
@@ -949,6 +948,7 @@ label{
   color: #7a7a7a;
   text-shadow: none;
   font-weight: normal;
+  margin: 10px 0;
 }
 #info p{
   font-family: 'open_sansregular';
@@ -968,8 +968,12 @@ label{
 #info span{
   font-family: 'open_sansbold';
 }
-
-
+#info .twitter{
+  margin-top: 10px;
+}
+#info .twitter img{
+  width: 70px;
+}
 #info section:last-of-type{
   border: none;
 }
@@ -998,6 +1002,74 @@ label{
 
 #thankyou .button{
   margin: 20px auto;
+}
+
+#twitter .sub-page-content{
+  background-color: #FFF;
+}
+
+#twitter_header{
+  height: 30px;
+  position: absolute;
+  left: 50%;
+  margin-left: -15px;
+  top: 20px;
+}
+
+#tweets{
+  list-style: none;
+  padding: 0;
+  margin: 25px 0;
+  width: 100%;
+  font-family: 'open_sansregular';
+}
+#tweets li{
+  box-sizing: border-box;
+  margin: 10px 20px;
+  border-bottom: 1px solid #e9e9e9;
+  position: relative;
+}
+#tweets img{
+    position: absolute;
+    left: 0px;
+}
+#tweets .content{
+  margin-left: 50px;
+  text-align: left;
+  padding: 0px 0px 5px 10px;
+}
+#tweets .date{
+  text-align: right;
+  font-size: 11px;
+  font-family: 'open_sansregular';
+  color: #9f9f9f;
+  float: right;
+}
+#tweets .name{
+  font-family: 'open_sansbold';
+  color: #0090d1;
+  font-size: 16px;
+  margin: 15px 0 0px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+#tweets .username{
+  font-size: 13px;
+  color: #7a7a7a;
+}
+#tweets .text{
+  font-size: 11px;
+  color: #9f9f9f;
+  line-height: 20px;
+}
+#tweets p{
+  margin: 5px 0 15px;
+}
+#tweets span.ctaconf{
+  color: #f69322;
+}
+#tweets span.ub{
+  color: #0090d1;
 }
 
 /* --- iPhone4 ---*/

@@ -122,10 +122,10 @@
             </div><!-- /navbar -->
           </div><!-- /footer -->
           <div class="sub-page-content">
-            <h1>Get a change to win a ton of prizes</h1>
-            <p>By submitting a review</p>
+            <h1>Submit a speaker review</h1>
+            <p>And get a chence to win a ton of prizes</p>
             <form action="javascript:submitReview()">
-              <input type="text" name="name" data-role="none" placeholder="FULL NAME">
+              <input type="text" name="name" data-role="none" placeholder="MY NAME">
               <select name="speaker" data-role="none">
               </select>
               <label id="speaker_label"><sub>*</sub></label>
@@ -241,9 +241,15 @@
             </div><!-- /navbar -->
           </div><!-- /footer -->
           <div class="sub-page-content">
+            <section class="twitter">
+-              <img src="css/images/twitter_info.png"/>
+-              <h1>#CTAConf</h1>
+-              <p>Check out what others are saying about the conference!</p>
+-              <a href="#twitter" data-transition="slide" class="button">View Timeline</a>
+-           </section>
             <section>
-              <img src="css/images/talks.png"/>
-              <h1>Talks, Panels & Discussion</h1>
+              <img src="css/images/location.png"/>
+              <h1>Location</h1>
               <p>8 am at SFU Goldcorp Center for the Arts</p>
               <p>149 W Hastings St, Vancouver, BC</p>
               <a href="#mapPopup2" data-rel="popup" class="button">View Map</a>
@@ -255,9 +261,11 @@
               <p><span>Password:</span> Unbounce</p>
             </section>
             <section>
-              <img src="css/images/twitter_info.png"/>
-              <h1>Tweet us!</hi>
-              <p>#ctaconf</p>
+              <a href="#twitter" data-transition="slide">
+                <img src="css/images/twitter_info.png"/>
+                <h1>Tweet us!</hi>
+                <p>#ctaconf</p>
+              </a>
             </section>
             <section>
               <p>Thanks to:</p>
@@ -294,6 +302,27 @@
           <!--<footer>Powered by <span>Unbounce</span></footer>-->
 
         </div>
-
+        <div data-role="page" id="twitter" class="sub-page"> <!-- page -->
+          <header>
+            <nav>
+              <a href="#" data-rel="back" data-transition="slide" data-direction="reverse"><img src="css/images/back.png">BACK</a>
+            </nav>
+            <h1>#CTAConf</h1>
+          </header>
+          <div data-role="footer" data-id="nav" data-position="fixed" id="nav">
+            <div data-role="navbar" class="speakers_active">
+              <ul>
+                <li><a href="#agenda" data-transition="slide" data-direction="reverse" id="agenda_nav">Agenda</a></li>
+                <li><a href="#speakers" data-transition="slide" id="speakers_nav">Speakers</a></li>
+                <li><a href="#review" data-transition="slide" id="reviews_nav">Reviews</a></li>
+                <li><a href="#info" data-transition="slide" id="info_nav" class="ui-btn-active ui-state-persist">Info</a></li>
+              </ul>
+            </div><!-- /navbar -->
+          </div><!-- /header -->
+          <div class="sub-page-content">
+            <ul id="tweets">
+            </ul>
+          </div>
+        </div>
     </body>
   </html>

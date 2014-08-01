@@ -106,6 +106,10 @@ $(document).on("pagecreate","#speakers",function(){
 	loadSpeakers();
 });
 
+$(document).on("pagebeforeshow","#twitter",function(){
+	loadTwitter();	
+});
+
 
 $(document).on("pagebeforeshow","#afterparty",function(){
 
@@ -560,6 +564,65 @@ function resetReviews(){
 	$("#review input").removeClass("invalid");
 	$("#review select").removeClass("invalid");
 	$("#alert").css("display","none");
+}
+
+function loadTwitter(){
+	data.on('value', function(snapshot){
+		tweets = snapshot.val().tweets;
+		console.log(tweets);
+		console.log(tweets.length);
+		var ul = $("#tweets");
+		$(ul).empty();
+		for(var i in tweets){
+			var li = document.createElement("li");
+			$(li).prependTo(ul);
+
+			var img = document.createElement("img");
+			$(img).attr("src",tweets[i].user__profile_image_url);
+			$(img).appendTo(li);
+
+			var content = document.createElement("div");
+			$(content).addClass("content");
+			$(content).appendTo(li);
+
+			var date = document.createElement("div");
+			var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+			var fullDate = new Date(tweets[i].created_at);
+			var month = months[fullDate.getMonth()];
+			var day = fullDate.getUTCDate();
+			var hour = fullDate.getHours();
+			var minutes = fullDate.getMinutes();
+			if(minutes < 10){
+				minutes = "0"+minutes.toString();
+			}
+			var newDate = month+" "+day+" at "+hour+":"+minutes;
+			$(date).addClass("date");
+			$(date).html(newDate);
+			$(date).appendTo(content);
+
+			var name = document.createElement("div");
+			$(name).addClass("name");
+			$(name).html(tweets[i].user__name);
+			$(name).appendTo(content);
+
+			var username = document.createElement("div");
+			$(username).addClass("username");
+			$(username).html("@"+tweets[i].user__screen_name);
+			$(username).appendTo(content);
+
+			var text = document.createElement("div");
+			$(text).addClass("text");
+			$(text).appendTo(content);
+
+			var p = document.createElement("p");
+			var plain = tweets[i].text;
+			var ctaconf = plain.replace("#ctaconf","<span class='ctaconf'>#ctaconf</span>");
+			var CTAConf = ctaconf.replace("#CTAConf","<span class='ctaconf'>#CTAConf</span>");
+			var unbounce = CTAConf.replace("@unbounce","<span class='ub'>@unbounce</span>");
+			$(p).html(unbounce);
+			$(p).appendTo(text);
+		}
+	});
 }
 
 
