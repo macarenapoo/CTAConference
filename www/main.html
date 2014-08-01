@@ -242,11 +242,11 @@
           </div><!-- /footer -->
           <div class="sub-page-content">
             <section class="twitter">
--              <img src="css/images/twitter_info.png"/>
--              <h1>#CTAConf</h1>
--              <p>Check out what others are saying about the conference!</p>
--              <a href="#twitter" data-transition="slide" class="button">View Timeline</a>
--           </section>
+             <img src="css/images/twitter_info.png"/>
+             <h1>#CTAConf</h1>
+             <p>Check out what others are saying about the conference!</p>
+             <a href="#twitter" data-transition="slide" class="button">View Timeline</a>
+           </section>
             <section>
               <img src="css/images/location.png"/>
               <h1>Location</h1>
@@ -259,13 +259,6 @@
               <h1>WIFI Information</h1>
               <p><span>Network:</span> SFU Woodwards</p>
               <p><span>Password:</span> Unbounce</p>
-            </section>
-            <section>
-              <a href="#twitter" data-transition="slide">
-                <img src="css/images/twitter_info.png"/>
-                <h1>Tweet us!</hi>
-                <p>#ctaconf</p>
-              </a>
             </section>
             <section>
               <p>Thanks to:</p>
@@ -303,13 +296,13 @@
 
         </div>
         <div data-role="page" id="twitter" class="sub-page"> <!-- page -->
-          <header>
+          <div data-role="header" id="header_main" data-position="fixed" data-id="header_main" data-tap-toggle="false">
             <nav>
-              <a href="#" data-rel="back" data-transition="slide" data-direction="reverse"><img src="css/images/back.png">BACK</a>
+              <a href="#info" data-rel="back" data-transition="slide" data-direction="reverse"><img src="css/images/back.png">BACK</a>
             </nav>
             <h1>#CTAConf</h1>
-          </header>
-          <div data-role="footer" data-id="nav" data-position="fixed" id="nav">
+          </div>
+          <div data-role="footer" data-id="nav" data-position="fixed" id="nav" data-tap-toggle="false">
             <div data-role="navbar" class="speakers_active">
               <ul>
                 <li><a href="#agenda" data-transition="slide" data-direction="reverse" id="agenda_nav">Agenda</a></li>
