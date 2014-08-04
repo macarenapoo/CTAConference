@@ -125,43 +125,42 @@
             <h1>Submit a speaker review</h1>
             <p>And get a chence to win a ton of prizes</p>
             <form action="javascript:submitReview()">
-              <input type="text" name="name" data-role="none" placeholder="MY NAME">
-              <select name="speaker" data-role="none">
-              </select>
-              <label id="speaker_label"><sub>*</sub></label>
-              <label data-role="none" id="performance_label">Speaker performance<sub>*</sub><span></span></label>
-              <span class="rating">
-                <input type="radio" name="performance" value="1" data-role="none"><i></i>
-                <input type="radio" name="performance" value="2" data-role="none"><i></i>
-                <input type="radio" name="performance" value="3" data-role="none"><i></i>
-                <input type="radio" name="performance" value="4" data-role="none"><i></i>
-                <input type="radio" name="performance" value="5" data-role="none"><i></i>
-              </span>
-              <label data-role="none" id="content_label">Quality of Content<sub>*</sub><span></span></label>
-              <span class="rating">
-                <input type="radio" name="quality" value="1" data-role="none"><i></i>
-                <input type="radio" name="quality" value="2" data-role="none"><i></i>
-                <input type="radio" name="quality" value="3" data-role="none"><i></i>
-                <input type="radio" name="quality" value="4" data-role="none"><i></i>
-                <input type="radio" name="quality" value="5" data-role="none"><i></i>
-              </span>
-              <label data-role="none" id="entertaining_label">Entertaining<sub>*</sub><span></span></label>
-              <span class="rating">
-                <input type="radio" name="entertaining" value="1" data-role="none"><i></i>
-                <input type="radio" name="entertaining" value="2" data-role="none"><i></i>
-                <input type="radio" name="entertaining" value="3" data-role="none"><i></i>
-                <input type="radio" name="entertaining" value="4" data-role="none"><i></i>
-                <input type="radio" name="entertaining" value="5" data-role="none"><i></i>
-              </span>
-              <label data-role="none" id="actionable_label">Actionable Content<sub>*</sub><span></span></label>
-              <span class="rating">
-                <input type="radio" name="actionable" value="1" data-role="none"><i></i>
-                <input type="radio" name="actionable" value="2" data-role="none"><i></i>
-                <input type="radio" name="actionable" value="3" data-role="none"><i></i>
-                <input type="radio" name="actionable" value="4" data-role="none"><i></i>
-                <input type="radio" name="actionable" value="5" data-role="none"><i></i>
-              </span>
-              <textarea name="comments" placeholder="COMMENTS (optional)" data-role="none"></textarea>
+                <input type="text" name="name" data-role="none" placeholder="MY NAME">
+                <select name="speaker" data-role="none">
+                </select>
+                <label id="speaker_label"><sub>*</sub></label>
+                <label data-role="none" id="actionable_label">How actionable was the content?<sub>*</sub><span></span></label>
+                <span class="rating">
+                  <input type="radio" name="actionable" value="1" data-role="none"><i></i>
+                  <input type="radio" name="actionable" value="2" data-role="none"><i></i>
+                  <input type="radio" name="actionable" value="3" data-role="none"><i></i>
+                  <input type="radio" name="actionable" value="4" data-role="none"><i></i>
+                  <input type="radio" name="actionable" value="5" data-role="none"><i></i>
+                </span>
+                <label data-role="none" id="entertaining_label">How engaging & entertaining?<sub>*</sub><span></span></label>
+                <span class="rating">
+                  <input type="radio" name="entertaining" value="1" data-role="none"><i></i>
+                  <input type="radio" name="entertaining" value="2" data-role="none"><i></i>
+                  <input type="radio" name="entertaining" value="3" data-role="none"><i></i>
+                  <input type="radio" name="entertaining" value="4" data-role="none"><i></i>
+                  <input type="radio" name="entertaining" value="5" data-role="none"><i></i>
+                </span>
+                <label data-role="none" id="advanced_label">Was it advanced enough for you?<sub>*</sub><span></span></label>
+                <span class="checkbox">
+                   <div>
+                     <input type="radio" name="advanced" value="perfect" data-role="none">
+                    <label>Perfect</label>
+                  </div>
+                  <div>
+                    <input type="radio" name="advanced" value="over my head" data-role="none">
+                    <label>Over my head</label>
+                  </div>
+                  <div>
+                    <input type="radio" name="advanced" value="too basic" data-role="none">
+                    <label>Too Basic</label>
+                  </div>
+                </span>
+                <textarea name="comments" placeholder="COMMENTS (optional)" data-role="none"></textarea>
             </form>
             <div id="alert">Please make sure all the fields are completed before submitting this review!</div>
             <a href="javascript:submitReview();" class="button">Submit Review</a>
@@ -306,9 +305,9 @@
             <div data-role="navbar" class="speakers_active">
               <ul>
                 <li><a href="#agenda" data-transition="slide" data-direction="reverse" id="agenda_nav">Agenda</a></li>
-                <li><a href="#speakers" data-transition="slide" id="speakers_nav">Speakers</a></li>
-                <li><a href="#review" data-transition="slide" id="reviews_nav">Reviews</a></li>
-                <li><a href="#info" data-transition="slide" id="info_nav" class="ui-btn-active ui-state-persist">Info</a></li>
+                <li><a href="#speakers" data-transition="slide" data-direction="reverse" id="speakers_nav">Speakers</a></li>
+                <li><a href="#review" data-transition="slide" data-direction="reverse" id="reviews_nav">Reviews</a></li>
+                <li><a href="#" data-transition="slide" id="info_nav" class="ui-btn-active ui-state-persist">Info</a></li>
               </ul>
             </div><!-- /navbar -->
           </div><!-- /header -->

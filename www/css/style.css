@@ -119,6 +119,8 @@
   background-size: contain;
   position: absolute;
   left: 0px;
+  top: 50%;
+  margin-top: -8px;
 }
 
 @-webkit-keyframes slidetounlock {
@@ -334,10 +336,13 @@ h2{
   text-transform: uppercase;
   margin: 0;
   padding: 0;
+  border: none;
+  min-height: 20px;
 }
 
 #header_main sup{
   font-size: 7px;
+  padding: 0;
 }
 
 #header-date{
@@ -765,6 +770,40 @@ label{
 }
 .rating i ~ i ~ i ~ i ~ i {
   width: 100%;
+}
+
+.checkbox{
+  display: inline-block;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.checkbox div{
+  width: 30%;
+  display: inline-block;
+}
+#review .checkbox label{
+  font-family: 'open_sansregular';
+  color: #9f9f9f;
+  margin: 0;
+  font-size: 10px;
+}
+.checkbox input{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 30px;
+  height: 30px;
+  background: #cecece;
+  border-radius: 50%;
+  border: none;
+}
+.checkbox input:checked{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 30px;
+  height: 30px;
+  border: solid 5px #cecece;
+  background: #008fd0;
 }
 
 #review form label{

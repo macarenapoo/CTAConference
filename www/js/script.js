@@ -59,17 +59,14 @@ $(document).on("pagecreate","#review", function(){
 	$("#review select[name=speaker]").change(function(){
 		$("#review select[name=speaker]").removeClass("invalid");
 	});
-	$("#review input[name=quality]").change(function(){
-		$("#content_label").removeClass("invalid");
-	});
-	$("#review input[name=performance]").change(function(){
-		$("#performance_label").removeClass("invalid");
-	});
 	$("#review input[name=entertaining]").change(function(){
 		$("#entertaining_label").removeClass("invalid");
 	});
 	$("#review input[name=actionable]").change(function(){
 		$("#actionable_label").removeClass("invalid");
+	});
+	$("#review input[name=advanced]").change(function(){
+		$("#advanced_label").removeClass("invalid");
 	});
 
 });
@@ -350,7 +347,7 @@ function loadConference(id){
 		}
 
 		var button = $("#submit_btn");
-		$(button).attr("href","javascript:loadReviews("+id+");");
+		$(button).attr("href","javascript:loadReviews("+agenda[id].speakers[0]+");");
 	});
 
 	$.mobile.changePage($('#speaker'),{transition:"slide"});
@@ -367,7 +364,7 @@ function loadReviews(speaker){
 	$(select).empty();
 
 	var option = document.createElement("option");
-	$(option).html("Select Speakers");
+	$(option).html("Select Speaker");
 	$(option).attr("disabled",true);
 	if(speaker == -1) $(option).attr("selected",true);
 	$(option).appendTo(select);
@@ -376,22 +373,13 @@ function loadReviews(speaker){
 		agenda = snapshot.val().agenda;
 		var allSpeakers = snapshot.val().speakers;
 
-		for(var i=0; i<agenda.length; i++){
-			if(agenda[i].type == "conference"){
-				var option = document.createElement("option");
-				var speakers = "";
-				for(var j=0; j<agenda[i].speakers.length; j++){
-					speakers += allSpeakers[agenda[i].speakers[j]].name;
-					if(j != agenda[i].speakers.length - 1){
-						speakers += ", "
-					}
-				}
-				$(option).html(speakers);
-				$(option).attr("value",speakers);
-				$(option).attr("data-role","none");
-				if(speaker == i) $(option).attr("selected",true);
-				$(option).appendTo(select);
-			}
+		for(var i in allSpeakers){
+			var option = document.createElement("option");
+			$(option).html(allSpeakers[i].name);
+			$(option).attr("value",allSpeakers[i].name);
+			$(option).attr("data-role","none");
+			if(speaker == i) $(option).attr("selected",true);
+			$(option).appendTo(select);	
 		}
 
 		if(speaker != -1){
@@ -404,23 +392,20 @@ function submitReview(){
 	var reviewsData = new Firebase("https://cta-conference.firebaseio.com/reviews");
 	var name = $("#review input[name=name]").val();
 	var conference  = $("#review select[name=speaker]").val();
-	var performance = $("#review input[name=performance]:checked").val();
-	var content = $("#review input[name=quality]:checked").val();;
+	var advanced = $("#review input[name=advanced]:checked").val();
 	var entertaining = $("#review input[name=entertaining]:checked").val();;
 	var actionable = $("#review input[name=actionable]:checked").val();;
 	var comments = $("#review textarea[name=comments]").val();;
 
 	var valid = validateForm();
-	console.log(conference, performance, content, entertaining, actionable, comments);
 
 	if(valid){
 		reviewsData.push({
 			name: name,
 			conference: conference,
-			performance: performance,
-			content: content,
 			entertaining: entertaining,
 			actionable: actionable,
+			advanced: advanced,
 			comments: comments
 		});
 		resetReviews();
@@ -430,25 +415,21 @@ function submitReview(){
 
 function validateForm(){
 	var conference  = $("#review select[name=speaker]").val();
-	var performance = $("#review input[name=performance]:checked").val();
-	var content = $("#review input[name=quality]:checked").val();;
+	var advanced = $("#review input[name=advanced]:checked").val();
 	var entertaining = $("#review input[name=entertaining]:checked").val();;
 	var actionable = $("#review input[name=actionable]:checked").val();;
 
-	if((conference == null)||(performance == undefined)||(entertaining == undefined)||(actionable = undefined)){
+	if((conference == null)||(advanced == undefined)||(entertaining == undefined)||(actionable = undefined)){
 		if(conference == null){
 			$("#review select[name=speaker]").addClass("invalid");
 		}
-		if(performance == null){
-			$("#performance_label").addClass("invalid");
+		if(advanced == undefined){
+			$("#advanced_label").addClass("invalid");
 		}
-		if(content == null){
-			$("#content_label").addClass("invalid");
-		}
-		if(entertaining == null){
+		if(entertaining == undefined){
 			$("#entertaining_label").addClass("invalid");
 		}
-		if(actionable == null){
+		if(actionable == undefined){
 			$("#actionable_label").addClass("invalid");
 		}
 		if($("#alert").css("display") == "none"){
