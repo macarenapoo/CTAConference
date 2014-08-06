@@ -1,4 +1,5 @@
 var data = new Firebase("https://cta-conference.firebaseio.com/");
+var twitter = new Firebase("https://cta-conference.firebaseio.com/tweets");
 var agenda = localData.agenda;
 
 
@@ -104,7 +105,10 @@ $(document).on("pagecreate","#speakers",function(){
 });
 
 $(document).on("pagebeforeshow","#twitter",function(){
-	loadTwitter();	
+	loadTwitter(last);
+	$("#twitter .sub-page-content").on("scroll",function(){
+		lazyLoad();
+	});	
 });
 
 
@@ -546,17 +550,27 @@ function resetReviews(){
 	$("#review select").removeClass("invalid");
 	$("#alert").css("display","none");
 }
+var last = undefined;
 
-function loadTwitter(){
-	data.on('value', function(snapshot){
-		tweets = snapshot.val().tweets;
+function loadTwitter(lastTweet){
+	if(lastTweet == undefined){
+		var allTweets = twitter.limit(10);
+	}else{
+		var allTweets = twitter.limit(11).endAt(null,lastTweet);
+	}
+	allTweets.on('value', function(snapshot){
+		tweets = snapshot.val();
 		console.log(tweets);
-		console.log(tweets.length);
 		var ul = $("#tweets");
-		$(ul).empty();
+		var tweetsArray = [];
+		last = undefined;
+		//$(ul).empty();
 		for(var i in tweets){
+			if(last == undefined) last = i;
+			console.log(last);
 			var li = document.createElement("li");
-			$(li).prependTo(ul);
+			//$(li).prependTo(ul);
+			tweetsArray.unshift(li);
 
 			var img = document.createElement("img");
 			$(img).attr("src",tweets[i].user__profile_image_url);
@@ -603,7 +617,36 @@ function loadTwitter(){
 			$(p).html(unbounce);
 			$(p).appendTo(text);
 		}
+		if(lastTweet == undefined){
+			for(var i = 0; i < tweetsArray.length; i++){
+				console.log(tweetsArray);
+				$(tweetsArray[i]).appendTo(ul);
+			}
+		}else{
+			for(var i = 1; i < tweetsArray.length; i++){
+				console.log(tweetsArray);
+				$(tweetsArray[i]).appendTo(ul);
+			}
+		}
+		$(".spinner").css("display","none");
+		var load = $("#loadMore");
+		$(load).attr("href","javascript:loadTwitter('"+last+"')");
 	});
+	
 }
 
+
+function lazyLoad(){
+
+	var scroll = $("#twitter .sub-page-content").scrollTop();
+	var divHeight = $("#twitter .sub-page-content").height();
+	var ulHeight = $("#tweets").height();
+	var bottom = ulHeight - divHeight + 70 - scroll;
+	console.log(bottom);
+	if(bottom == 20){
+		$(".spinner").css("display","block");
+		setTimeout('loadTwitter(last)',3000);
+		//loadTwitter(last);
+	} 
+}
 
