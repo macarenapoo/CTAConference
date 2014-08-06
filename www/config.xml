@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.ryanw.barcodescanner"
-        version   = "2.0.0">
-  <name>CTA Conf</name>
+        id        = "com.unbounce.CTAConference"
+        version   = "1.1.0">
+  <name>CTA Conference</name>
 
   <description>
-    Call to Action Conference App
+    Jam-packed with actionable and exciting content by expert speakers, CTA Conf will make you jump out of your seat and implement what you've learned. You can expect keynotes, panels and discussions focused around landing page campaigns, conversion optimization, desing and a/b testing.
   </description>
 
-  <author href="http://phonegap.com" email="support@phonegap.com">
-    PhoneGap Team
+  <author href="http://calltoactionconf.com" email="ctaconf@unbounce.com">
+    Unbounce CTA Conference
   </author>
 
   <!-- third party plugins -->
