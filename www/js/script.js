@@ -97,7 +97,9 @@ $(document).on("pagebeforeshow","#agenda",function(){
 });
 
 $(document).on("pagecreate","#review",function(){
-	loadReviews();
+	if($("#review form select[name=speaker]").html() == false){
+		loadReviews();
+	}
 });
 
 $(document).on("pagecreate","#speakers",function(){
@@ -351,7 +353,23 @@ function loadConference(id){
 		}
 
 		var button = $("#submit_btn");
-		$(button).attr("href","javascript:loadReviews("+agenda[id].speakers[0]+");");
+		if(agenda[id].speakers.length > 1){
+			var speakersList = "";
+			for(var j=0; j<agenda[id].speakers.length; j++){
+				console.log(allSpeakers[agenda[id].speakers[j]].name);
+				var name = justName(allSpeakers[agenda[id].speakers[j]].name);
+				console.log(name);
+				if(j != agenda[i].speakers.length - 1){
+					speakersList += " + ";
+				}
+				speakersList += name;
+			}
+			console.log(speakersList);
+			$(button).attr("href","javascript:loadReviews('"+speakersList+"');");
+			
+		}else{
+			$(button).attr("href","javascript:loadReviews('"+allSpeakers[agenda[id].speakers[0]].name+"');");
+		}
 	});
 
 	$.mobile.changePage($('#speaker'),{transition:"slide"});
@@ -377,14 +395,39 @@ function loadReviews(speaker){
 		agenda = snapshot.val().agenda;
 		var allSpeakers = snapshot.val().speakers;
 
-		for(var i in allSpeakers){
-			var option = document.createElement("option");
-			$(option).html(allSpeakers[i].name);
-			$(option).attr("value",allSpeakers[i].name);
-			$(option).attr("data-role","none");
-			if(speaker == i) $(option).attr("selected",true);
-			$(option).appendTo(select);	
+		for(var i=0; i<agenda.length; i++){
+			if(agenda[i].type == "conference"){
+				var option = document.createElement("option");
+				var speakers = "";
+				for(var j=0; j<agenda[i].speakers.length; j++){
+					if(agenda[i].speakers.length > 1){
+						var opt = document.createElement("option");
+						$(opt).html(allSpeakers[agenda[i].speakers[j]].name);
+						$(opt).attr("value",allSpeakers[agenda[i].speakers[j]].name);
+						$(opt).attr("data-role","none");
+						$(opt).appendTo(select);
+						var name = justName(allSpeakers[agenda[i].speakers[j]].name);
+						speakers += name;
+						if(j != agenda[i].speakers.length - 1){
+							speakers += " + ";
+						}
+					}else{
+						speakers += allSpeakers[agenda[i].speakers[j]].name;
+					}
+					
+				}
+				$(option).html(speakers);
+				$(option).attr("value",speakers);
+				$(option).attr("data-role","none");
+				$(option).appendTo(select);
+			}
 		}
+
+		$("#review form select[name=speaker] option").each(function(){
+			if($(this).attr("value") == speaker){
+				$(this).attr("selected",true);
+			}
+		});
 
 		if(speaker != -1){
 			$.mobile.changePage($('#review'),{transition:"slide"});
@@ -392,12 +435,18 @@ function loadReviews(speaker){
 	});
 }
 
+function justName(name){
+	var space = name.indexOf(" ");
+	var justname = name.substring(0,space);
+	return justname;
+}
+
 function submitReview(){
 	var reviewsData = new Firebase("https://cta-conference.firebaseio.com/reviews");
 	var name = $("#review input[name=name]").val();
 	var conference  = $("#review select[name=speaker]").val();
 	var advanced = $("#review input[name=advanced]:checked").val();
-	var entertaining = $("#review input[name=entertaining]:checked").val();;
+	var entertaining = $("#review input[name=entertaining]:checked").val();
 	var actionable = $("#review input[name=actionable]:checked").val();;
 	var comments = $("#review textarea[name=comments]").val();;
 
