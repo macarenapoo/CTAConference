@@ -1,5 +1,5 @@
-var data = new Firebase("https://cta-conference.firebaseio.com/");
-var twitter = new Firebase("https://cta-conference.firebaseio.com/tweets");
+var data = new Firebase("https://cta-conf.firebaseio.com/");
+var twitter = new Firebase("https://cta-conf.firebaseio.com/tweets");
 var agenda = localData.agenda;
 
 
@@ -13,7 +13,7 @@ $(document).on("pageinit","#speaker",function(){
 	var pageHeight = Math.ceil(((height - 115)*100)/height);
 	$(".sub-page-content").css("max-height", pageHeight + "%");
 });
-$(document).on("pageinit","#afterparty",function(){
+$(document).on("pageinit","#extra",function(){
 	var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
 	var pageHeight = Math.ceil(((height - 115)*100)/height);
 	$(".sub-page-content").css("max-height", pageHeight + "%");
@@ -78,8 +78,8 @@ $(document).on("pageinit","#speaker", function(){
 	})
 });
 
-$(document).on("pageinit","#afterparty", function(){
-	$("#afterparty").on("swiperight",function(event){
+$(document).on("pageinit","#extra", function(){
+	$("#extra").on("swiperight",function(event){
 		$.mobile.changePage($('#agenda'),{transition:"slide", reverse: true});
 	})
 });
@@ -93,7 +93,10 @@ $(document).on("pageinit","#speaker_bio", function(){
 
 
 $(document).on("pagebeforeshow","#agenda",function(){
-	loadAgenda();	
+	loadAgenda();
+	$("#agenda .sub-page-content").on("scroll",function(){
+		checkDate();
+	});	
 });
 
 $(document).on("pagecreate","#review",function(){
@@ -113,10 +116,10 @@ $(document).on("pagebeforeshow","#twitter",function(){
 	});	
 });
 
+var iframesrc = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2602.6362667748645!2d-123.114781!3d49.283289100000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54867178c58de583%3A0x13b07c95f3aaa412!2s560+Seymour+St!5e0!3m2!1ses!2sca!4v1404760373315";
+$(document).on("pagebeforeshow","#extra",function(){
 
-$(document).on("pagebeforeshow","#afterparty",function(){
-
-	$("#afterparty iframe").remove();
+	$("#extra iframe").remove();
 	
 	var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
 	afterHeight = height - 60;
@@ -126,7 +129,7 @@ $(document).on("pagebeforeshow","#afterparty",function(){
 
 	var iframe = document.createElement("iframe");
 	$(iframe).attr({
-		src: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2602.6362667748645!2d-123.114781!3d49.283289100000005!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54867178c58de583%3A0x13b07c95f3aaa412!2s560+Seymour+St!5e0!3m2!1ses!2sca!4v1404760373315",
+		src: iframesrc,
 		frameborder: "0",
 		style: "border:0",
 		seamless : true,
@@ -136,7 +139,7 @@ $(document).on("pagebeforeshow","#afterparty",function(){
 	$(iframe).appendTo($("#mapPopup"));
 
 	
-	$("#afterparty iframe").css("height", afterHeight + "px");
+	$("#extra iframe").css("height", afterHeight + "px");
 	
 });
 
@@ -220,8 +223,17 @@ function loadAgenda(){
 		var speakers = snapshot.val().speakers;
 		
 		var agendaUl = $("#agenda ul.agenda");
+		var date = "Thursday, September 11";
+
 		$("#agenda ul.agenda").empty();
-		for(var i=0; i<agenda.length; i++){
+		
+		for(var i in agenda){
+			if(agenda[i].date != date){
+				var label = document.createElement("label");
+				$(label).html(agenda[i].date+"<sup>th</sup>");
+				$(label).appendTo(agendaUl);
+				date = agenda[i].date;
+			}
 			var li = document.createElement("li");
 
 			var time = document.createElement("div");
@@ -247,11 +259,10 @@ function loadAgenda(){
 
 				break;
 
-				case "party":
+				case "extra":
 
 					var link = document.createElement("a");
-					$(link).attr("href","#afterparty");
-					$(link).addClass("party");
+					$(link).attr("href","javascript:loadExtra("+i+")");
 					$(link).attr("data-transition","slide");
 					$(link).appendTo(agendaUl);
 
@@ -270,7 +281,7 @@ function loadAgenda(){
 					var speaker = document.createElement("div");
 					$(speaker).addClass("speaker");
 					var speakersName = "";
-					for(var j = 0; j < agenda[i].speakers.length; j++){
+					for(var j in agenda[i].speakers){
 						speakersName = speakersName + speakers[agenda[i].speakers[j]].name;
 						if((agenda[i].speakers.length > 1) && (j != agenda[i].speakers.length -1)){
 							speakersName += ", ";
@@ -697,5 +708,89 @@ function lazyLoad(){
 		setTimeout('loadTwitter(last)',3000);
 		//loadTwitter(last);
 	} 
+}
+
+function loadExtra(id){
+	var extra = $("#extra .sub-page-content");
+	$(extra).empty();
+	data.on('value', function(snapshot){
+		agenda = snapshot.val().agenda;
+		iframesrc = agenda[id].map;
+		var img = document.createElement("img");
+		$(img).attr("src",agenda[id].image);
+		$(img).appendTo(extra);
+		
+		var title = document.createElement("div");
+		$(title).addClass("title");
+		$(title).html(agenda[id].title);
+		$(title).appendTo(extra);
+
+		var h2 = document.createElement("div");
+		$(h2).addClass("h2");
+		$(h2).html(agenda[id].h2);
+		$(h2).appendTo(extra);
+
+		var address = document.createElement("div");
+		$(address).addClass("address");
+		$(address).html(agenda[id].address);
+		$(address).appendTo(extra);
+
+		var button = document.createElement("a");
+		$(button).attr("href","#mapPopup");
+		$(button).attr("data-rel","popup");
+		$(button).addClass("button");
+		$(button).html("View Map");
+		$(button).appendTo(extra);
+
+		if(agenda[id].description != ""){
+			var hr = document.createElement("hr");
+			$(hr).appendTo(extra);
+
+			var text = document.createElement("div");
+			$(text).addClass("text");
+			$(text).html(agenda[id].description);
+			$(text).appendTo(extra);
+
+			var ul = document.createElement("ul");
+			$(ul).addClass("questions");
+			$(ul).appendTo(extra);
+
+			for(var x in agenda[id].questions){
+				var li = document.createElement("li");
+				$(li).appendTo(ul);
+
+				var q = document.createElement("div");
+				$(q).addClass("question");
+				$(q).html(agenda[id].questions[x].q);
+				$(q).appendTo(li);
+
+				var a = document.createElement("div");
+				$(a).addClass("answer");
+				$(a).html(agenda[id].questions[x].a);
+				$(a).appendTo(li);
+			}
+		}
+	});
+
+	$("#extra .questions li").on("tap",function(){
+		if($(this).hasClass("open")){
+			$(this).removeClass("open");
+		}else{
+			$(this).addClass("open");
+		}
+		$(this).children(".answer").slideToggle(400);
+	})
+	
+	$.mobile.changePage($("#extra"),{transition:"slide"});
+}
+
+function checkDate(){
+	var scroll = $("#agenda .sub-page-content").scrollTop();
+	if(scroll > 100){
+
+		$("#agenda #header_main label").html("Friday, September 12<sup>th</sup>");
+	}else{
+		$("#agenda #header_main label").html("Thursday, September 11<sup>th</sup>");
+	}
 }
 
