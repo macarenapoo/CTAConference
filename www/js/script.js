@@ -1,5 +1,6 @@
 var data = new Firebase("https://cta-conf.firebaseio.com/");
 var twitter = new Firebase("https://cta-conf.firebaseio.com/tweets");
+var wifi = new Firebase("hhttps://cta-conf.firebaseio.com/wifi");
 var agenda = localData.agenda;
 
 
@@ -167,6 +168,10 @@ $(document).on("pagebeforeshow","#info",function(){
 	
 	$("#info iframe").css("height", afterHeight + "px");
 	
+});
+
+$(document).on("pagecreate","#info",function(){
+	loadInfo();
 });
 
 function changeNav(to, from){
@@ -792,5 +797,19 @@ function checkDate(){
 	}else{
 		$("#agenda #header_main label").html("Thursday, September 11<sup>th</sup>");
 	}
+}
+
+function loadInfo(){
+	wifi.on('value', function(snapshot){
+		wifi = snapshot.val();
+		
+		var network = document.createElement("p");
+		$(network).html("<span>Network:</span> "+wifi.network);
+		$(network).appendTo($("#info .wifi"));
+
+		var password = document.createElement("p");
+		$(password).html("<span>Password:</span> "+wifi.password);
+		$(password).appendTo($("#info section.wifi"));
+	});
 }
 
