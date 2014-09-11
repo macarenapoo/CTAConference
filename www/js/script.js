@@ -214,28 +214,19 @@ function changeNav(to, from){
 		$.mobile.changePage($("#"+newPage),{transition:"slide", reverse:true});
 	}
 }
-document.addEventListener("online", onLine, false);
-document.addEventListener("offline", offLine, false);
-
-function onLine(){
-	alert("this is the online function");
-}
-
-function offLine(){
-	alert("this is the offline function");
-}
 
 function loadAgenda(){
 	alert("this is trying to load agenda");
 	alert(navigator.onLine);
 	if (navigator.onLine) {
+		alert("You are online");
 		var data = new Firebase("https://cta-conf.firebaseio.com/");
 		data.on('value', function(snapshot){
 			agenda = snapshot.val().agenda;
 			var speakers = snapshot.val().speakers;
 			
 			var agendaUl = $("#agenda ul.agenda");
-			var date = "Thursday, September 11";
+			var date = "Online, September 11";
 
 			$("#agenda ul.agenda").empty();
 			
