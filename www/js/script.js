@@ -297,6 +297,7 @@ function loadAgenda(){
 			}
 		});
 	}else{
+		alert("no network");
 		var agenda = localData.agenda;
 		var speakers = localData.speakers;
 		

@@ -71,5 +71,9 @@
   <gap:splash src="splash/xhdpi.png" gap:platform="android" gap:density="xhdpi" />
   <gap:splash src="splash/xxhdpi.png" gap:platform="android" gap:density="xxhdpi" />
 
+  <feature name="NetworkStatus">
+    <param name="android-package" value="org.apache.cordova.NetworkManager" />
+  </feature>
+
   <!-- content src="http://www.w3.org/2010/05/video/mediaevents.html" / -->
 </widget>
