@@ -214,9 +214,20 @@ function changeNav(to, from){
 		$.mobile.changePage($("#"+newPage),{transition:"slide", reverse:true});
 	}
 }
+document.addEventListener("online", onLine, false);
+document.addEventListener("offline", offLine, false);
 
+function onLine(){
+	alert("this is the online function");
+}
+
+function offLine(){
+	alert("this is the offline function");
+}
 
 function loadAgenda(){
+	alert("this is trying to load agenda");
+	alert(navigator.onLine);
 	if (navigator.onLine) {
 		var data = new Firebase("https://cta-conf.firebaseio.com/");
 		data.on('value', function(snapshot){
