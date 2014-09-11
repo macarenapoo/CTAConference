@@ -6,6 +6,13 @@ module.exports = [
         "clobbers": [
             "window.open"
         ]
+    },
+    {
+    	"file": "plugins/org.apache.cordova.NetworkManager/www/network-information.js",
+        "id": "org.apache.cordova.NetworkManager.NetworkManager",
+        "clobbers": [
+            "navigator.connection"
+        ]
     }
 ]
 });
